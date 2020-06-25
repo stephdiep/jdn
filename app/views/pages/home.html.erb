@@ -1,2 +1,21 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container my-5">
+  <h1>Bienvenue au<br> <strong>Guichet de tickets</strong> <br>des Jeux de Noël 2020!</h1>
+
+  <%= simple_form_for(@ticket) do |f| %>
+    <%= f.input :name, label: false, placeholder: 'Entrez un nom!'%>
+    <%= f.button :submit, 'Créer!', class: 'btn btn-success'%>
+  <% end %>
+
+  <button class="btn btn-danger">Générer un ticket!</button>
+  <h2>Et l'heureux gagnant est...</h2>
+    <% if @selected_name == nil%>
+    <p>Aucun ticket n'a été émis pour le moment...</p>
+    <% else %>
+      <p><%= @selected_name %></p>
+    <% end %>
+
+  <h2>Liste de tous les joueurs</h2>
+  <% @all_tickets.each do |name| %>
+    <%= name %>
+  <% end %>
+</div>
