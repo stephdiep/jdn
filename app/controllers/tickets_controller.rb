@@ -11,6 +11,13 @@ class TicketsController < ApplicationController
     end
   end
 
+  def destroy
+    all_tickets = Ticket.all.map { |ticket| ticket.name }
+    @selected_ticket = all_tickets.delete_at(rand(all_tickets.length))
+
+    @selected_ticket.delete_at(@selected_ticket)
+  end
+
   private
   def ticket_params
     params.require(:ticket).permit(:name)

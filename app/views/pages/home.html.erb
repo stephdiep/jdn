@@ -1,21 +1,36 @@
 <div class="container my-5">
-  <h1>Bienvenue au<br> <strong>Guichet de tickets</strong> <br>des Jeux de Noël 2020!</h1>
+  <h1>Bienvenue au <strong>Guichet de tickets</strong> des Jeux de Noël 2020!</h1>
 
   <%= simple_form_for(@ticket) do |f| %>
-    <%= f.input :name, label: false, placeholder: 'Entrez un nom!'%>
-    <%= f.button :submit, 'Créer!', class: 'btn btn-success'%>
+    <%= f.input :name, label: false, placeholder: 'Entre un nom!'%>
+    <%= f.button :submit, 'Crée un ticket!', class: 'btn btn-success'%>
   <% end %>
 
-  <button class="btn btn-danger">Générer un ticket!</button>
-  <h2>Et l'heureux gagnant est...</h2>
+  <div class="generate-ticket">
+    <%# link_to ticket_path, method: :delete do %>
+      <button class="btn btn-danger">Génère un gagnant!</button>
+    <%# end %>
+    <h2>Et l'heureux gagnant est...</h2>
     <% if @selected_name == nil%>
-    <p>Aucun ticket n'a été émis pour le moment...</p>
+      <p>Aucun ticket n'a été émis pour le moment...</p>
     <% else %>
       <p><%= @selected_name %></p>
     <% end %>
+  </div>
 
-  <h2>Liste de tous les joueurs</h2>
-  <% @all_tickets.each do |name| %>
-    <%= name %>
-  <% end %>
+  <div class="all=players">
+    <h2>Liste de tous les joueurs</h2>
+    <% @all_tickets.each do |name| %>
+      <%= name %>
+    <% end %>
+  </div>
+
+  <div class="all-winners">
+    <h2>Liste des gagnants</h2>
+    <% if @winners[0] == nil%>
+      <p>Aucun ticket n'a été sélectionné pour le moment...</p>
+    <% else %>
+      <%= @winners %>
+    <% end %>
+  </div>
 </div>
