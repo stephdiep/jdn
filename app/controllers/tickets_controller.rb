@@ -1,4 +1,11 @@
 class TicketsController < ApplicationController
+  def index
+    @all_tickets = Ticket.all.order(:created_at).map { |ticket| ticket.name }
+    @ticket = Ticket.new
+    @last_winner = Ticket.where(winner: true).order(updated_at: :desc).first
+    @winners = Ticket.where(winner: true).order(updated_at: :desc)
+  end
+
   def create
     @ticket = Ticket.new(ticket_params)
 
@@ -15,7 +22,7 @@ class TicketsController < ApplicationController
     @selected_ticket = Ticket.all.where(winner: false).sample
 
     if @selected_ticket.update(winner: true)
-      redirect_to root_path
+      redirect_to tickets_path
     else
       flash.alert = "Il y a eu un pépin, veuillez réessayer."
     end

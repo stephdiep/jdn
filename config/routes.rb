@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: 'pages#home'
-  resources :tickets, only: [:create]
+  resources :tickets, only: [:index, :create]
   get '/ticket', to: 'tickets#update'
+  resources :funds, only: [ :index, :create ]
 end
