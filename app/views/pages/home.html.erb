@@ -1,15 +1,15 @@
 <div class="container my-5">
-  <h1>Bienvenue au <strong>Guichet de tickets</strong> des Jeux de Noël <%= Date.today.year %>!</h1>
+  <h1>Guichet de tickets</h1>
 
   <div class="container">
     <div class="row d-flex justify-content-around align-items-start mb-4">
-      <div class="card shadow col-sm col-md-5">
+      <div class="card-jdn col-sm col-md-5">
         <h2>Générer un ticket</h2>
         <%= simple_form_for(@ticket) do |f| %>
           <div class="d-flex justify-content-center">
 
             <div>
-              <%= f.input :name, label: false, placeholder: 'Entre un nom!'%>
+              <%= f.input :name, label: false, placeholder: 'Entrez un nom'%>
             </div>
 
             <div>
@@ -22,18 +22,18 @@
         <% end %>
       </div>
 
-      <div class="card shadow col-sm col-md-5 generate-ticket ml-4">
+      <div class="card-jdn col-sm col-md-5 generate-ticket ml-4">
+        <h2>Gagnant</h2>
         <%= link_to ticket_path do %>
-          <button class="btn btn-jdn">
+          <button class="btn btn-jdn my-3">
             <i class="fas fa-trophy"></i>
           </button>
         <% end %>
-        <h2>Et l'heureux gagnant est...</h2>
           <p>
             <% if @last_winner != nil %>
               <%= @last_winner.name %>
             <% else %>
-              Il n'y a aucun gagnant pour l'instant...
+              Aucun gagnant pour l'instant.
             <% end %>
           </p>
       </div>
@@ -42,7 +42,7 @@
 
   <div class="row d-flex justify-content-around align-items-start">
 
-    <div class="all-players card shadow col-sm col-md-5">
+    <div class="all-players card-jdn col-sm col-md-5">
       <h2>Tous les joueurs</h2>
       <ul>
         <% @all_tickets.each do |name| %>
@@ -51,7 +51,7 @@
       </ul>
     </div>
 
-    <div class="card shadow col-sm col-md-5 all-winners ml-4">
+    <div class="card-jdn col-sm col-md-5 all-winners ml-4">
       <h2>Gagnants</h2>
           <% if @winners[0] == nil %>
             <p>Il n'y a aucun gagnant pour l'instant...</p>

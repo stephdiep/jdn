@@ -3,13 +3,19 @@
 }
 
 .btn-jdn {
-  color: $frost;
-  background-color: $mblue;
+  background-color: white;
+  box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
+  -12px -12px 65px 0 rgba(255, 255, 255, 0.5);
   transition: 0.4s;
 
   &:hover {
-    background-color: $dblue;
-    color: $frost;
+    background-color: white;
+    color: white;
+  }
+  .fa-plus, .fa-trophy {
+    background: -webkit-linear-gradient($gray, #a39d9d, $gray);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
 
