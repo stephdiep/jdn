@@ -1,13 +1,9 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: $grayish;
-  i {
-    font-size: 20px;
-    color: $lblue;
-    transition: 0.5s;
-  }
-  i:hover {
-    color: $dblue;
+  li {
+    font-weight: bold;
+    font-size: small;
   }
 }
 
