@@ -1,4 +1,14 @@
-h1 {
-  margin-bottom: 32px;
-  text-align: center;
+.home-page {
+  text-align: right;
+  height: 70vh;
+
+  .title {
+    margin-right: 32px;
+  }
+
+  h2 {
+    font-size: large;
+    font-weight: bold;
+  }
+
 }
