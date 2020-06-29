@@ -7,30 +7,34 @@
   <% end %>
 
   <div class="generate-ticket">
-    <%# link_to ticket_path, method: :delete do %>
+    <%= link_to ticket_path do %>
       <button class="btn btn-danger">Génère un gagnant!</button>
-    <%# end %>
-    <h2>Et l'heureux gagnant est...</h2>
-    <% if @selected_name == nil%>
-      <p>Aucun ticket n'a été émis pour le moment...</p>
-    <% else %>
-      <p><%= @selected_name %></p>
     <% end %>
+    <h2>Et l'heureux gagnant est...</h2>
+      <p>
+        <% if @last_winner != nil %>
+          <%= @last_winner.name %>
+        <% else %>
+          Il n'y a aucun gagnant pour l'instant...
+        <% end %>
+      </p>
   </div>
 
   <div class="all=players">
     <h2>Liste de tous les joueurs</h2>
+    <ul>
     <% @all_tickets.each do |name| %>
-      <%= name %>
+      <li><%= name %></li>
     <% end %>
+    </ul>
   </div>
 
   <div class="all-winners">
-    <h2>Liste des gagnants</h2>
-    <% if @winners[0] == nil%>
-      <p>Aucun ticket n'a été sélectionné pour le moment...</p>
-    <% else %>
-      <%= @winners %>
-    <% end %>
+    <h2>Liste des gagnants des Jeux de Noël <%= Date.today.year %></h2>
+    <ul>
+      <% @winners.each do |winner| %>
+        <li><%= winner.name %></li>
+      <% end %>
+    </ul>
   </div>
 </div>

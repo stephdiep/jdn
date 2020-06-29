@@ -11,11 +11,14 @@ class TicketsController < ApplicationController
     end
   end
 
-  def destroy
-    all_tickets = Ticket.all.map { |ticket| ticket.name }
-    @selected_ticket = all_tickets.delete_at(rand(all_tickets.length))
+  def update
+    @selected_ticket = Ticket.all.sample
 
-    @selected_ticket.delete_at(@selected_ticket)
+    if @selected_ticket.update(winner: true)
+      redirect_to root_path
+    else
+      flash.alert = "Il y a eu un pépin, veuillez réessayer."
+    end
   end
 
   private
