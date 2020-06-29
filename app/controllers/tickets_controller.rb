@@ -3,16 +3,16 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
 
     if @ticket.save
-      flash.notice = "Ticket created!"
+      flash.notice = "Yay ! 🎉 Le ticket a bel et bien été créé."
       redirect_to root_path
     else
-      flash.alert = "Something went wrong, please try again."
+      flash.alert = "Mmmh 🤔 il semblerait que le nom n'ait pas été fourni.."
       redirect_to root_path
     end
   end
 
   def update
-    @selected_ticket = Ticket.all.sample
+    @selected_ticket = Ticket.all.where(winner: false).sample
 
     if @selected_ticket.update(winner: true)
       redirect_to root_path
@@ -26,3 +26,5 @@ class TicketsController < ApplicationController
     params.require(:ticket).permit(:name)
   end
 end
+
+# Ticket.all.each { |ticket| ticket.update(winner: false) }

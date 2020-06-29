@@ -1,3 +1,18 @@
 .btn {
-  border-radius: 32px;
+  border-radius: 50%;
+}
+
+.btn-jdn {
+  color: $frost;
+  background-color: $mblue;
+  transition: 0.4s;
+
+  &:hover {
+    background-color: $dblue;
+    color: $frost;
+  }
+}
+
+.btn-ticket {
+  margin-left: 16px;
 }
