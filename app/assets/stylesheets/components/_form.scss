@@ -1,3 +1,14 @@
 input {
   border-radius: 8px !important;
+  border: 0px !important;
+  box-shadow: 12px 12px 24px 0 rgba(0, 0, 0, 0.2),
+  -12px -12px 65px 0 rgba(255, 255, 255, 0.5);
+}
+
+.sign-in-form {
+  margin-top: 64px;
+
+  form {
+    margin: 32px 0;
+  }
 }

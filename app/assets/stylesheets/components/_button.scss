@@ -10,7 +10,8 @@
 
   &:hover {
     background-color: white;
-    color: white;
+    color: $gray;
+    font-weight: bold;
   }
   .fa-plus, .fa-trophy {
     background: -webkit-linear-gradient($gray, #a39d9d, $gray);

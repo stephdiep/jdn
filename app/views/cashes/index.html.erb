@@ -1,0 +1,46 @@
+<div class="container">
+  <h1>Portrait financier</h1>
+  <p>Par souci de transparence, nous vous communiquons désormais toutes les dépenses et entrées d'argent des Jeux de Noël.</p>
+
+  <div class="container d-flex justify-content-around align-items-start">
+    <div class="card-jdn-large card-jdn">
+      <h2>Crédit</h2>
+      <% if @credits[0] == nil %>
+        <p>Aucun crédit pour le moment.</p>
+      <% else %>
+        <table>
+          <% @credits.each do |credit| %>
+            <tr>
+              <td class="desc"><%= credit.description %></td>
+              <td class="value"><%= sprintf('%.2f', credit.value) %> $</td>
+            </tr>
+          <% end %>
+          <tr class="total">
+            <td class="desc">Total</td>
+            <td class="value"><%= @total_cred %> $</td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+
+    <div class="card-jdn-large card-jdn">
+      <h2>Débit</h2>
+      <% if @debits[0] == nil %>
+        <p>Aucun débit pour le moment.</p>
+      <% else%>
+        <table>
+          <% @debits.each do |debit| %>
+            <tr>
+              <td class="desc"><%= debit.description %></td>
+              <td class="value"><%= sprintf('%.2f', debit.value) %> $</td>
+            </tr>
+          <% end %>
+          <tr class="total">
+            <td class="desc">Total</td>
+            <td class="value"><%= @total_deb %> $</td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>
