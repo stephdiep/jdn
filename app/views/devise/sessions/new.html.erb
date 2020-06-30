@@ -1,11 +1,10 @@
-<div class="container sign-in-form d-flex justify-content-center align-items-center flex-column">
+<div class="container sign-in-form d-flex justify-content-center align-items-center flex-column" id="sign-in">
   <h2>Se connecter</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
       <%= f.input :email,
                   required: false,
-                  autofocus: true,
                   label: false,
                   placeholder: 'Adresse courriel',
                   input_html: { autocomplete: "email" } %>
