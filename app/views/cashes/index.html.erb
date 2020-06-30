@@ -18,7 +18,7 @@
             <% end %>
             <tr class="total">
               <td class="desc">Total</td>
-              <td class="value"><%= @total_cred %> $</td>
+              <td class="value"><%= sprintf('%.2f', @total_cred) %> $</td>
             </tr>
           </table>
         <% end %>
@@ -38,7 +38,7 @@
             <% end %>
             <tr class="total">
               <td class="desc">Total</td>
-              <td class="value"><%= @total_deb %> $</td>
+              <td class="value"><%= sprintf('%.2f', @total_cred) %> $</td>
             </tr>
           </table>
         <% end %>

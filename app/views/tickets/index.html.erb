@@ -27,7 +27,7 @@
 
       <div class="card-jdn col-sm-12 col-md-3">
         <h2>Tous les joueurs</h2>
-        <% if @all_tickets == nil %>
+        <% if @all_tickets[0] == nil %>
           <p>Aucun ticket n'a été émis pour l'instant</p>
         <% else %>
           <ul>
@@ -58,7 +58,7 @@
 
         <h2>Derniers gagnants</h2>
           <% if @winners[0] == nil %>
-            <p>Il n'y a aucun gagnant pour l'instant...</p>
+            <p>Aucun gagnant pour l'instant.</p>
           <% else%>
           <ul>
             <% @winners.each do |winner| %>
