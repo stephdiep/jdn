@@ -11,25 +11,29 @@ class CashesController < ApplicationController
     @debits.each do |debit|
       @total_deb += debit.value
     end
+
+    if @total_cred == nil
+      @balance = - @total_deb
+    elsif @total_deb == nil
+      @balance = @total_cred
+    else
+      @balance = @total_cred - @total_deb
+    end
   end
 
   def create
-    @fund = Cash.new
-    # Need to code this
-    # description = params
-    # category = credit by default
-    # fund_2122 = true by default
-    if @cash.save(cash_params)
-      flash.notice = "Oui"
+    @fund = Cash.new(value: params[:cash][:value].to_f, description: params[:cash][:description], category: 'credit', fund_2122: true)
+
+    if @fund.save
       redirect_to funds_path
     else
-      flash.alert = "Non"
+      flash.alert = "Mmmh 🤔 il semblerait que le nom n'ait pas été fourni.."
       redirect_to funds_path
     end
   end
 
   def funds
-    @funds = Cash.where(fund_2122: true)
+    @funds = Cash.where(fund_2122: true).order(value: :desc)
 
     @total_funds = 0.00
     @funds.each do |fund|
@@ -37,10 +41,5 @@ class CashesController < ApplicationController
     end
 
     @fund = Cash.new
-  end
-
-  private
-  def cash_params
-    params.require(:cash).permit(:value, :category, :fund_2122, :description)
   end
 end

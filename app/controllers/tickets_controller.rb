@@ -12,11 +12,10 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(ticket_params)
 
     if @ticket.save
-      flash.notice = "Yay ! 🎉 Le ticket a bel et bien été créé."
-      redirect_to root_path
+      redirect_to tickets_path
     else
       flash.alert = "Mmmh 🤔 il semblerait que le nom n'ait pas été fourni.."
-      redirect_to root_path
+      redirect_to tickets_path
     end
   end
 

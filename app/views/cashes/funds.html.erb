@@ -10,41 +10,39 @@
       <p>Aucun fonds amassé pour le moment. Pensez à contribuer !</p>
 
     <% else %>
-
-      <% if user_signed_in? %>
-
-        <div class="card-jdn">
-          <h2>Ajouter une contribution</h2>
-          <%= simple_form_for(@fund) do |f| %>
-            <%= f.input :description, placeholder: 'Description', 
-                                      label: false %>
-            <%= f.input :value, placeholder: 'Valeur', label: false %>
-            <%= f.input :category, label: 'Catégorie', 
-                                   collection: ['debit', 'credit'], 
-                                   as: :radio_buttons, required: false %>
-            <%= button_tag type: 'submit', class: "btn btn-jdn btn-ticket" do %>
-              <i class="fas fa-plus"></i>
-            <% end %>
+      <div class="container">
+        <div class="row d-flex justify-content-around align-items-start">
+          <% if user_signed_in? %>
+            <div class="card-jdn col-sm-12 col-lg-4">
+              <h2 class="mb-4">Ajouter une contribution</h2>
+              <%= simple_form_for(@fund) do |f| %>
+                <%= f.input :description, placeholder: 'Prénom', 
+                                          label: false %>
+                <%= f.input :value, placeholder: 'Valeur', 
+                                    label: false  %>
+                <%= button_tag type: 'submit', class: "btn btn-jdn btn-ticket" do %>
+                  <i class="fas fa-plus"></i>
+                <% end %>
+              <% end %>
+            </div>
           <% end %>
-        </div>
 
-      <% end %>
+          <div class="card-jdn col-sm-12 col-lg-4">
+            <h2>Contributions</h2>
+            <table>
+              <% @funds.each do |fund| %>
+                <tr>
+                  <td class="desc"><%= fund.description %></td>
+                  <td class="value"><%= sprintf('%.2f', fund.value) %> $</td>
+                </tr>
+              <% end %>
+            </table>
+          </div>
 
-      <div class="d-flex justify-content-around align-items-start">
-        <div class="card-jdn col-sm-12 col-md-4">
-          <h2>Contributions</h2>
-          <table>
-            <% @funds.each do |fund| %>
-              <tr>
-                <td class="desc"><%= fund.description %></td>
-                <td class="value"><%= sprintf('%.2f', fund.value) %> $</td>
-              </tr>
-            <% end %>
-          </table>
-        </div>
-        <div class="card-jdn col-sm-12 col-md-4">
-          <h2>Total amassé</h2>
-          <span><%= sprintf('%.2f', @total_funds) %> $</span>
+          <div class="card-jdn col-sm-12 col-lg-4">
+            <h2>Total amassé</h2>
+            <span><%= sprintf('%.2f', @total_funds) %> $</span>
+          </div>
         </div>
       </div>
     <% end %>
@@ -54,13 +52,22 @@
   <h2>Prix de contribution pour la biennale 2021-2022</h2>
     <div class="container">
       <div class="row">
-        <div class="card-jdn col-sm-12 col-md-3">
+        <div class="card-jdn col-sm-5 col-md-3">
           <%= image_tag "https://images.unsplash.com/photo-1504707748692-419802cf939d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1030&q=80" %>
           <div class="prize-info mt-4">
             <h3>Ordinateur portable</h3>
             <small>MacBook Pro 13"</small>
           </div>
         </div>
+
+        <div class="card-jdn col-sm-5 col-md-3">
+          <%= image_tag "https://images.unsplash.com/photo-1504707748692-419802cf939d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1030&q=80" %>
+          <div class="prize-info mt-4">
+            <h3>Ordinateur portable</h3>
+            <small>MacBook Pro 13"</small>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
