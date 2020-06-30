@@ -16,17 +16,31 @@
 
   text-align: center;
 
-  h2 {
-    font-size: large;
-    font-weight: bold;
-  }
-
-  p {
-    font-size: medium;
-  }
-
   ul {
     list-style: none;
     padding-left: 0;
+  }
+
+  img {
+    width: 90%;
+
+  }
+}
+
+.card-jdn-large {
+  width: 300px !important;
+  td {
+    padding: 0 32px;
+  }
+}
+
+.desc, .value {
+  text-align: right;
+}
+
+.total {
+  border-top: 1px solid $gray;
+  .value {
+    font-weight: bold;
   }
 }
