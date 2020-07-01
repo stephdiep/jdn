@@ -52,13 +52,13 @@
             <% if @last_winner != nil %>
               <%= @last_winner.name %>
             <% else %>
-              Aucun gagnant pour l'instant.
+              Aucun gagnant pour l'instant
             <% end %>
           </p>
 
         <h2>Derniers gagnants</h2>
           <% if @winners[0] == nil %>
-            <p>Aucun gagnant pour l'instant.</p>
+            <p>Aucun gagnant pour l'instant</p>
           <% else%>
           <ul>
             <% @winners.each do |winner| %>
