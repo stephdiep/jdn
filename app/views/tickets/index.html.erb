@@ -27,7 +27,7 @@
 
       <div class="card-jdn col-sm-12 col-md-3">
         <h2>Tous les joueurs</h2>
-        <% if @tickets_hash == nil %>
+        <% if @tickets_hash.empty? %>
           <p>Aucun ticket n'a été émis pour l'instant</p>
         <% else %>
           <ul>
