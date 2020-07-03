@@ -13,13 +13,14 @@
       <div class="container">
         <div class="row d-flex justify-content-around align-items-start">
           <% if user_signed_in? %>
-            <div class="card-jdn col-sm-12 col-lg-4">
+            <div class="card-jdn col-sm-12 col-lg-3">
               <h2 class="mb-4">Ajouter une contribution</h2>
               <%= simple_form_for(@fund) do |f| %>
                 <%= f.input :description, placeholder: 'Prénom', 
                                           label: false %>
                 <%= f.input :value, placeholder: 'Valeur', 
-                                    label: false  %>
+                                    label: false,
+                                    input_html: { min: '0.00', step: '0.05' }  %>
                 <%= button_tag type: 'submit', class: "btn btn-jdn btn-ticket" do %>
                   <i class="fas fa-plus"></i>
                 <% end %>
@@ -27,7 +28,7 @@
             </div>
           <% end %>
 
-          <div class="card-jdn col-sm-12 col-lg-4">
+          <div class="card-jdn col-sm-12 col-lg-3">
             <h2>Contributions</h2>
             <table>
               <% @funds.each do |fund| %>
@@ -39,7 +40,7 @@
             </table>
           </div>
 
-          <div class="card-jdn col-sm-12 col-lg-4">
+          <div class="card-jdn col-sm-12 col-lg-3">
             <h2>Total amassé</h2>
             <span><%= sprintf('%.2f', @total_funds) %> $</span>
           </div>

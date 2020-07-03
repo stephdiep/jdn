@@ -1,6 +1,10 @@
 class TicketsController < ApplicationController
   def index
-    @all_tickets = Ticket.all.order(:created_at).map { |ticket| ticket.name }
+    tickets_arr = Ticket.all.where(winner: false).order(:name).map { |ticket| ticket.name }
+    @tickets_hash = Hash.new(0)
+
+    tickets_arr.each { |value| @tickets_hash[value] += 1 }
+
     @ticket = Ticket.new
     @last_winner = Ticket.where(winner: true).order(updated_at: :desc).first
     @winners = Ticket.where(winner: true).order(updated_at: :desc).reject do |ticket|

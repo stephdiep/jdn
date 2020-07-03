@@ -27,12 +27,16 @@
 
       <div class="card-jdn col-sm-12 col-md-3">
         <h2>Tous les joueurs</h2>
-        <% if @all_tickets == nil %>
+        <% if @tickets_hash == nil %>
           <p>Aucun ticket n'a été émis pour l'instant</p>
         <% else %>
           <ul>
-            <% @all_tickets.each do |name| %>
-              <li><%= name %></li>
+            <% @tickets_hash.each do |name, number| %>
+              <% if number == 1 %>
+                <li><%= name %></li>
+              <% else %>
+                <li><%= name %> ( x <%= number %> )</li>
+              <% end %>
             <% end %>
           </ul>
         <% end %>
@@ -52,13 +56,13 @@
             <% if @last_winner != nil %>
               <%= @last_winner.name %>
             <% else %>
-              Aucun gagnant pour l'instant.
+              Aucun gagnant pour l'instant
             <% end %>
           </p>
 
         <h2>Derniers gagnants</h2>
           <% if @winners[0] == nil %>
-            <p>Il n'y a aucun gagnant pour l'instant...</p>
+            <p>Aucun gagnant pour l'instant</p>
           <% else%>
           <ul>
             <% @winners.each do |winner| %>

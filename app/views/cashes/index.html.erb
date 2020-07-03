@@ -7,7 +7,7 @@
       <div class="card-jdn-xlarge card-jdn col-sm-12 col-lg-4">
         <h2>Crédit</h2>
         <% if @credits[0] == nil %>
-          <p>Aucun crédit pour le moment.</p>
+          <p>Aucun crédit pour le moment</p>
         <% else %>
           <table>
             <% @credits.each do |credit| %>
@@ -18,7 +18,7 @@
             <% end %>
             <tr class="total">
               <td class="desc">Total</td>
-              <td class="value"><%= @total_cred %> $</td>
+              <td class="value"><%= sprintf('%.2f', @total_cred) %> $</td>
             </tr>
           </table>
         <% end %>
@@ -27,7 +27,7 @@
       <div class="card-jdn-xlarge card-jdn col-sm-12 col-lg-4">
         <h2>Débit</h2>
         <% if @debits[0] == nil %>
-          <p>Aucun débit pour le moment.</p>
+          <p>Aucun débit pour le moment</p>
         <% else%>
           <table>
             <% @debits.each do |debit| %>
@@ -38,7 +38,7 @@
             <% end %>
             <tr class="total">
               <td class="desc">Total</td>
-              <td class="value"><%= @total_deb %> $</td>
+              <td class="value"><%= sprintf('%.2f', @total_cred) %> $</td>
             </tr>
           </table>
         <% end %>
