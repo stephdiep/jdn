@@ -6,3 +6,4 @@
 # Cash.create!(value: 251.95, description: 'Fonds initial investi 2019', category: 'credit')
 # Cash.create!(value: 92.71, description: 'Restant JdN19', category: 'credit')
 # puts("All cashes created.")
+
