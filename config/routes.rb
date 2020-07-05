@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   resources :cashes, only: :create
   get '/finances', to: 'cashes#index'
   get '/funds', to: 'cashes#funds'
+
+  resources :ideas, only: :create
+  get 'idees', to: 'ideas#index'
 end
