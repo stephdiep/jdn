@@ -1,11 +1,13 @@
 class IdeasController < ApplicationController
-  before_action :new_idea, only: [:index, :create]
   def index
     @all_ideas = Idea.all
+    @idea = Idea.new
   end
 
   def create
-    if @idea.save(idea_params)
+    @idea = Idea.new(idea_params)
+
+    if @idea.save
       redirect_to idees_path
     else
       flash.alert = "Il y a eu un petit pépin..."
@@ -14,10 +16,6 @@ class IdeasController < ApplicationController
   end
 
   private
-  def new_idea
-    @idea = Idea.new
-  end
-
   def idea_params
     params.require(:idea).permit(:message)
   end
