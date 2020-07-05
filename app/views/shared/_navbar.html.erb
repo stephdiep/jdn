@@ -28,6 +28,11 @@
           Finances
         <% end %>
       </li>
+      <li class="nav-item" id="nav-finances">
+        <%= link_to idees_path, class: "nav-link" do %>
+          Boîte à idées
+        <% end %>
+      </li>
       <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
